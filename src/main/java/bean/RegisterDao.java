@@ -11,7 +11,8 @@ public class RegisterDao {
     public static int register(User user){
         int status = 0;
 
-        try(Connection con = ConnectionProvider.getCon()){
+        try{
+            Connection con = ConnectionProvider.getCon();
             PreparedStatement statement = con.prepareStatement("INSERT INTO user_table (name, hobby, pass) VALUES (?,?,?);");
 
             statement.setString(1, user.getName());
